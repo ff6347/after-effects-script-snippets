@@ -1,0 +1,1 @@
+﻿fun();function fun(){app.beginUndoGroup("XXX");var curComp = app.project.activeItem;   if (!curComp || !(curComp instanceof CompItem)){        alert("noComp");        return;    };for(var i = 0; i < 10;i++){curComp.layers.addText(String(i));        }app.endUndoGroup();}
