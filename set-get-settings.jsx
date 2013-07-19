@@ -41,12 +41,9 @@ var data = {
   key_float:"afloatingpointvalue",
   key_boolean:"aboolean"
 };
-
 var sc = new SettingsControl(data.settingsSectionName);
 test_set();
-
 test_get();
-
 sc = null;
 
 
@@ -64,7 +61,6 @@ function test_get () {
   alert("String Value: "+ resstring);
 
 }
-
 function test_set(){
    sc.exec.set_setting_boolean( data.key_boolean, false);
    sc.exec.set_setting_number( data.key_int, 345);
@@ -79,6 +75,47 @@ function test_set(){
  * @param {String} _section the Settings Section Name
  */
 function SettingsControl (_section) {
+/**
+ * Usage:
+ *
+ *  var data = {
+ *   settingsSectionName:"testSettings",
+ *   key_string:"astring",
+ *   key_int:"ainteger",
+ *   key_float:"afloatingpointvalue",
+ *   key_boolean:"aboolean"
+ * };
+ *
+ * var sc = new SettingsControl(data.settingsSectionName);
+ *
+ * test_set();
+ * test_get();
+ * sc = null;
+ *
+ *
+ *
+ * function test_get () {
+ *   var resbool = sc.exec.get_setting_boolean( data.key_boolean);
+ *   alert("Boolean Value: "+resbool);
+ *
+ *   var resint = sc.exec.get_setting_int( data.key_int);
+ *   alert("Integer Value: "+ resint);
+ *
+ *     var resfloat = sc.exec.get_setting_int( data.key_float);
+ *   alert("Floating Point Value: "+ resfloat);
+ *
+ *     var resstring = sc.exec.get_setting_string( data.key_string);
+ *   alert("String Value: "+ resstring);
+ * }
+ * function test_set(){
+ *    sc.exec.set_setting_boolean( data.key_boolean, false);
+ *    sc.exec.set_setting_number( data.key_int, 345);
+ *    sc.exec.set_setting_string(data.key_string, "Hello Settings");
+ *   sc.exec.set_setting_number(data.key_float, 2.5);
+ * }
+ *
+ */
+
   this.section = _section;
   this.exec = {
   section : _section,
