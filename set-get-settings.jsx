@@ -40,32 +40,68 @@ var data = {
   key_string:"astring",
   key_int:"ainteger",
   key_float:"afloatingpointvalue",
-  key_boolean:"aboolean"
+  key_boolean:"aboolean",
+  str:"name",
+  numint:"radius",
+  numfloat:"something",
+  bool:"doit"
 };
 
+/**
+ * This is for the patch function test
+ *
+ */
+ settings = {
+ "doit": true,
+ "radius":100,
+ "something":2.333333,
+ "name": "Bob"
+ };
 // the settings control class is a own submodule
 // you can find it here
 // https://github.com/fabiantheblind/AESettingsControl
 //
 var sc = new SettingsControl(data.settingsSectionName);
-test_set();
-test_get();
+// test_set();
+// test_get();
+test_patch();
 sc = null;
 
 
-function test_get () {
-  var resbool = sc.exec.get_setting_boolean( data.key_boolean);
-  alert("Boolean Value: "+resbool);
-  var resint = sc.exec.get_setting_int( data.key_int);
-  alert("Integer Value: "+ resint);
+function test_patch (){
 
-    var resfloat = sc.exec.get_setting_int( data.key_float);
-  alert("Floating Point Value: "+ resfloat);
+  sc.exec.set_setting_boolean( data.bool, false);
+  sc.exec.set_setting_number( data.numint, 69);
+  sc.exec.set_setting_string(data.str, "Hello Patched");
+  sc.exec.set_setting_number(data.numfloat, 2.3);
+  var resultofset = test_get();
+  // now patch them
+  alert(
+    "This is pre patch settings object 'settings'\n"+settings.toSource()+"\n\n"+
+    "This is what was initially set \n" + resultofset
+    );
+  sc.exec.patch_settings_recieve(settings, ["radius", "something", "doit", "name","doesnotexiist"]);
+  alert(
+    "This is post patch settings obj\n"+settings.toSource() + "\n\n" +
+    "Compare to the values initially sets\n" + resultofset
+    );
 
-    var resstring = sc.exec.get_setting_string( data.key_string);
-  alert("String Value: "+ resstring);
+
 
 }
+
+function test_get () {
+  var resbool = sc.exec.get_setting_boolean( data.bool);
+  var resint = sc.exec.get_setting_int( data.numint);
+    var resfloat = sc.exec.get_setting_float( data.numfloat);
+    var resstring = sc.exec.get_setting_string( data.str);
+  return ("Boolean Value Setting: '"+resbool + "' Key = ( "+ data.bool+" )\n"+
+  "Integer Value Setting: '"+ resint + "' Key = ( "+data.numint+" )\n"+
+  "Floating Point Value Setting: '"+ resfloat + "' Key = ( "+data.numfloat+" )\n"+
+  "String Value Setting: '"+ resstring +"' Key = ( "+data.str+" )");
+
+}
+
 function test_set(){
    sc.exec.set_setting_boolean( data.key_boolean, false);
    sc.exec.set_setting_number( data.key_int, 345);
