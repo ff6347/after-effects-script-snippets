@@ -1,0 +1,3 @@
+[submodule "AESettingsControl"]
+	path = AESettingsControl
+	url = git@github.com:fabiantheblind/AESettingsControl.git
