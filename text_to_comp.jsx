@@ -1,4 +1,12 @@
 /**
+ * @author fabiantheblind
+ * @description adds text to a comp with UI
+ *
+ *
+ * @todo check if it works
+ */
+
+/**
  *  function template by @author fabiantheblind
  */
 (function(thisObj){
@@ -20,12 +28,12 @@ data =  {
 };
 
 
-// THIS WILL CHECK IF PANEL IS DOCKABLE OR FLAOTING WINDOW  
+// THIS WILL CHECK IF PANEL IS DOCKABLE OR FLAOTING WINDOW
 var win   = buildUI(thisObj );
 if ((win !== null) && (win instanceof Window)) {
     win.center();
     win.show();
-} // end if win  null and not a instance of window 
+} // end if win  null and not a instance of window
 
  function buildUI (thisObj  ) {
         var H = 25; // the height
@@ -37,7 +45,7 @@ if ((win !== null) && (win instanceof Window)) {
 
     if (win !== null) {
       win.txt = win.add('edittext',[x ,y,x+W*3,y + H],"");
-      x+=W*3+G
+      x+=W*3+G;
         win.do_it_button = win.add('button', [x ,y,x+W*3,y + H], 'do it');
         win.do_it_button.onClick = function () {
           data.counter++;
@@ -49,8 +57,8 @@ if ((win !== null) && (win instanceof Window)) {
       };
     }
     return win;
-}  
-function run(){ 
+}
+function run(){
 // "in function run. From here on it is a straight run"
 
     var curComp = app.project.activeItem;
@@ -81,7 +89,7 @@ for(var l = 0;l < arrOLayers.length;l++){
     layerIndices[layerIndices.length] = arrOLayers[l].index;
   }
 
-// now precompose the result       
+// now precompose the result
 var newComp = curComp.layers.precompose(layerIndices, name, true );
 // newComp.parentFolder = folder;
 // it is the selected layer

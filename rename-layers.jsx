@@ -1,3 +1,11 @@
+/**
+ * @author fabiantheblind
+ * @description rename selected layers with number
+ * this happens in comp and project panel
+ *
+ *
+ * @todo catch error if layer as no source
+ */
 fun();
 function fun(){
 
@@ -6,7 +14,7 @@ var curComp = app.project.activeItem;
    if (!curComp || !(curComp instanceof CompItem)){
         alert("noComp");
         return;
-    };
+    }
 
 
 
