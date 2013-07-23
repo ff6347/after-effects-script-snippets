@@ -15,11 +15,19 @@ var curComp = app.project.activeItem;
         alert("noComp");
         return;
     }
-    var basename = prompt("enter base name will have a number","Layer");
+    var promttxt = "layer";
+    if(curComp.selectedLayers.length < 1){
+      alert("no selection");
+      return;
+    }else{
+      promttxt = curComp.selectedLayers[0].name;
+    }
+    var basename = prompt("enter base name will have a number",promttxt);
     if(basename.length < 1){
       alert("nothing is to short");
       return;
     }
+
     for(var i =0; i < curComp.selectedLayers.length;i++){
       var name = basename + " " + String(i+1);
       var currLayer = curComp.selectedLayers[i];
