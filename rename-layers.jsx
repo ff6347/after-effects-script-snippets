@@ -9,7 +9,7 @@
 fun();
 function fun(){
 
-app.beginUndoGroup("fun");
+app.beginUndoGroup("rename layers");
 var curComp = app.project.activeItem;
    if (!curComp || !(curComp instanceof CompItem)){
         alert("noComp");
