@@ -15,13 +15,16 @@ var curComp = app.project.activeItem;
         alert("noComp");
         return;
     }
-
-
-
+    var basename = prompt("enter base name will have a number","Layer");
+    if(basename.length < 1){
+      alert("nothing is to short");
+      return;
+    }
     for(var i =0; i < curComp.selectedLayers.length;i++){
-      var name = "Scene" + String(i+1);
-      curComp.selectedLayers.source.name = name;
-      curComp.selectedLayers.name = name;
+      var name = basename + " " + String(i+1);
+      var currLayer = curComp.selectedLayers[i];
+      try{currLayer.source.name = name;}catch(error){ $.writeln( "this layer has no source"); }
+      currLayer.name = name;
     }
 
 app.endUndoGroup();
