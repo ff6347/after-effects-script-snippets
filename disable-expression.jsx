@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @author fabiantheblind
  * @description enable expression
  *
@@ -10,17 +10,17 @@
  *
  */
 var curComp = app.project.activeItem;
-  app.beginUndoGroup('disable expression');
+app.beginUndoGroup('disable expression');
 
-for(var i = 0; i < curComp.selectedProperties.length;i++){
+for(var i = 0; i < curComp.selectedProperties.length; i++) {
 
-        var prop = curComp.selectedProperties[i];
-        if(prop.expressionEnabled === false){
-                        prop.expressionEnabled = true;
-            }else{
-//~                     prop.expressionEnabled = false;
-                }
+  var prop = curComp.selectedProperties[i];
+  if(prop.expressionEnabled === false) {
+    prop.expressionEnabled = true;
+  }else{
+// prop.expressionEnabled = false;
+  }
 
 
-    }
-      app.endUndoGroup();
+}
+app.endUndoGroup();

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @author fabiantheblind
  * @description this is a AE Settings Class
  *
